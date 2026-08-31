@@ -736,3 +736,82 @@ footer {
         min-height: 190px;
     }
 }
+
+
+/* ==============================
+   EXPERIENCE TIMELINE
+================================ */
+
+.experience-page {
+    max-width: 1120px;
+}
+
+.experience-timeline {
+    border-top: 1px solid #dfe3e8;
+}
+
+.experience-timeline-item {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 38px;
+    padding: 34px 0;
+    border-bottom: 1px solid #dfe3e8;
+}
+
+.experience-timeline-item .experience-date {
+    color: #08756d;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.experience-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.experience-heading h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin-bottom: 3px;
+}
+
+.experience-company {
+    color: #08756d;
+    font-weight: 600;
+}
+
+.experience-location {
+    color: #7b8493;
+    font-size: 14px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.experience-content ul {
+    padding-left: 20px;
+    color: #5f697a;
+    max-width: 790px;
+}
+
+.experience-content li {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 700px) {
+    .experience-timeline-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .experience-heading {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .experience-location {
+        text-align: left;
+        white-space: normal;
+    }
+}

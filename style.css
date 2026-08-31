@@ -846,3 +846,20 @@ footer {
 .project-subheading h2 {
     font-size: 30px;
 }
+
+
+.publication-group {
+    margin-top: 64px;
+}
+
+.publication-group:first-of-type {
+    margin-top: 0;
+}
+
+.publication-group-title {
+    margin-bottom: 26px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #dfe3e8;
+    color: #152033;
+    font-size: 30px;
+}

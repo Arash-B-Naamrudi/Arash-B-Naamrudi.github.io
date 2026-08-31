@@ -863,3 +863,20 @@ footer {
     color: #152033;
     font-size: 30px;
 }
+
+
+.contact-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.contact-phone {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.contact-phone:hover {
+    border-color: white;
+}

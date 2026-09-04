@@ -13,12 +13,13 @@
 <body>
 
 <!-- NAVIGATION -->
-<nav class="navbar">
+<nav class="navbar" aria-label="Main navigation">
     <div class="nav-container">
 
         <a href="index.html" class="logo">Arash B. Naamrudi</a>
 
-        <div class="nav-links">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+<div class="nav-links" id="primary-navigation">
             <a href="about.html">About</a>
             <a href="projects.html">Projects</a>
             <a href="publications.html">Publications</a>
@@ -446,5 +447,43 @@
 </footer>
 
 
+<script>
+(() => {
+    const nav = document.querySelector('.navbar');
+    const button = nav.querySelector('.nav-toggle');
+    const links = nav.querySelector('.nav-links');
+    const mobile = window.matchMedia('(max-width: 900px)');
+    const setOpen = (open) => {
+        button.setAttribute('aria-expanded', String(open));
+        button.textContent = open ? 'Close menu' : 'Menu';
+        nav.classList.toggle('nav-open', open);
+    };
+    button.addEventListener('click', () => {
+        setOpen(button.getAttribute('aria-expanded') !== 'true');
+    });
+    nav.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            setOpen(false);
+            button.focus();
+        }
+    });
+    links.addEventListener('click', (event) => {
+        if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', (event) => {
+        if (!nav.contains(event.target)) setOpen(false);
+    });
+    nav.addEventListener('focusout', (event) => {
+        if (!nav.contains(event.relatedTarget)) setOpen(false);
+    });
+    mobile.addEventListener('change', () => {
+        const active = document.activeElement;
+        setOpen(false);
+        if (mobile.matches && links.contains(active)) button.focus();
+        else if (!mobile.matches && active === button) nav.querySelector('.logo').focus();
+    });
+    nav.classList.add('nav-enhanced');
+})();
+</script>
 </body>
 </html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Publications | Arash B. Naamrudi</title><link rel="stylesheet" href="style.css"></head><body>
-<nav class="navbar"><div class="nav-container"><a href="index.html" class="logo">Arash B. Naamrudi</a><div class="nav-links"><a href="about.html">About</a><a href="projects.html">Projects</a><a href="publications.html">Publications</a><a href="experience.html">Experience</a><a href="index.html#contact">Contact</a></div></div></nav>
+<nav class="navbar" aria-label="Main navigation"><div class="nav-container"><a href="index.html" class="logo">Arash B. Naamrudi</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+<div class="nav-links" id="primary-navigation"><a href="about.html">About</a><a href="projects.html">Projects</a><a href="publications.html">Publications</a><a href="experience.html">Experience</a><a href="index.html#contact">Contact</a></div></div></nav>
 <section class="content-section publications-page">
 <div class="section-header"><p>RESEARCH OUTPUT</p><h2>Publications</h2><span>Research spanning building performance, energy systems, computational fluid dynamics and mechanical engineering.</span></div>
 <div class="publication-group">
@@ -68,4 +69,42 @@
 </div>
 <p class="scholar-profile-link"><a href="https://scholar.google.com/citations?user=JPeU2toAAAAJ&hl=en" target="_blank" rel="noopener">View complete Google Scholar profile →</a></p>
 </section>
-<footer><p>© 2026 Arash B. Naamrudi</p><p>Built with GitHub Pages</p></footer></body></html>
+<footer><p>© 2026 Arash B. Naamrudi</p><p>Built with GitHub Pages</p></footer><script>
+(() => {
+    const nav = document.querySelector('.navbar');
+    const button = nav.querySelector('.nav-toggle');
+    const links = nav.querySelector('.nav-links');
+    const mobile = window.matchMedia('(max-width: 900px)');
+    const setOpen = (open) => {
+        button.setAttribute('aria-expanded', String(open));
+        button.textContent = open ? 'Close menu' : 'Menu';
+        nav.classList.toggle('nav-open', open);
+    };
+    button.addEventListener('click', () => {
+        setOpen(button.getAttribute('aria-expanded') !== 'true');
+    });
+    nav.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            setOpen(false);
+            button.focus();
+        }
+    });
+    links.addEventListener('click', (event) => {
+        if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', (event) => {
+        if (!nav.contains(event.target)) setOpen(false);
+    });
+    nav.addEventListener('focusout', (event) => {
+        if (!nav.contains(event.relatedTarget)) setOpen(false);
+    });
+    mobile.addEventListener('change', () => {
+        const active = document.activeElement;
+        setOpen(false);
+        if (mobile.matches && links.contains(active)) button.focus();
+        else if (!mobile.matches && active === button) nav.querySelector('.logo').focus();
+    });
+    nav.classList.add('nav-enhanced');
+})();
+</script>
+</body></html>

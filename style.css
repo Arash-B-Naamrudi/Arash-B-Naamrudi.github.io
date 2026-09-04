@@ -880,3 +880,49 @@ footer {
 .contact-phone:hover {
     border-color: white;
 }
+
+
+/* Accessible responsive navigation; links stay visible without JavaScript. */
+.nav-toggle {
+    display: none;
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 1px solid #08756d;
+    border-radius: 5px;
+    background: white;
+    color: #064d47;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.navbar a:focus-visible, .nav-toggle:focus-visible {
+    outline: 3px solid #08756d;
+    outline-offset: 4px;
+}
+#contact { scroll-margin-top: 90px; }
+@media (max-width: 900px) {
+    .nav-container {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 20px;
+    }
+    .navbar .logo { font-size: 18px; }
+    .navbar .nav-links {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        gap: 0;
+        max-height: calc(100dvh - 90px);
+        overflow-y: auto;
+        border-top: 1px solid #e5e7eb;
+    }
+    .navbar .nav-links a {
+        display: block;
+        min-height: 44px;
+        padding: 10px 8px;
+    }
+    .navbar .nav-links a:hover { background: #eef6f5; }
+    .nav-enhanced .nav-toggle { display: block; }
+    .nav-enhanced .nav-links { display: none; }
+    .nav-enhanced.nav-open .nav-links { display: flex; }
+}

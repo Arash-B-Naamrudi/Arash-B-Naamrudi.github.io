@@ -926,3 +926,15 @@ footer {
     .nav-enhanced .nav-links { display: none; }
     .nav-enhanced.nav-open .nav-links { display: flex; }
 }
+
+/* Full, uncropped publication figures. */
+.publication-card > .publication-figure {
+    display: flex; align-items: center; justify-content: center;
+    margin: 0; padding: 0; align-self: start;
+    border: 1px solid #e5e7eb; border-radius: 6px;
+    overflow: hidden; background: #fff;
+}
+.publication-image { display: block; width: 100%; height: 180px; object-fit: contain; }
+.publication-card.publication-card-text { grid-template-columns: minmax(0, 1fr); }
+.publication-card-content { min-width: 0; }
+.publication-figure:focus-visible { outline: 3px solid #08756d; outline-offset: 3px; }
